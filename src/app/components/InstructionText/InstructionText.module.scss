@@ -17,14 +17,21 @@
 
 .textCont h4 {
   color: $whiteTextColor;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 160%;
+}
+
+.subHeader {
+  font-size: 28px !important;
+  color: $whiteTextColor;
+  margin: 18px 0 32px 0;
 }
 
 @media screen and (max-width: 936px) {
   .textCont h2 {
     font-size: 34px;
+    margin-top: 10px;
   }
 
   .textCont h1 {
@@ -33,5 +40,10 @@
 
   .textCont p {
     font-size: 16px;
+  }
+
+  .subHeader {
+    font-size: 20px !important;
+    margin-bottom: 10px;
   }
 }

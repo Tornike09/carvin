@@ -3,8 +3,17 @@ import styles from "./CarMainInfo.module.scss";
 import { MakeIcon } from "@/app/icons/MakeIcon";
 import { ModelIcon } from "@/app/icons/ModelIcon";
 import { EngineIcon } from "@/app/icons/EngineIcon";
+import { ICarInfo } from "@/app/types";
 
-export const CarMainInfo = () => {
+interface ICarMainInfoProps {
+  carInfo: ICarInfo[]
+}
+
+export const CarMainInfo: React.FC<ICarMainInfoProps> = ({ carInfo }) => {
+  const engineSize = carInfo[0].DisplacementL;
+
+  const formattedEngineSize = Number(engineSize) > 0 ? Number(engineSize).toFixed(1) : engineSize
+  console.log(engineSize);
   return (
     <div className={styles.carInfoCont}>
       <div>
@@ -12,17 +21,17 @@ export const CarMainInfo = () => {
           <CalendarIcon />
         </div>
         <div>
-          <span>Year</span>
-          <h4>2016</h4>
+          <span>წელი</span>
+          <h4>{carInfo[0].ModelYear}</h4>
         </div>
       </div>
       <div>
         <div className={styles.iconCont}>
           <MakeIcon />
         </div>
-        <div>
-          <span>Make</span>
-          <h4>Land Rover</h4>
+        <div className={styles.informationCont}>
+          <span>მწარმოებელი</span>
+          <h4>{carInfo[0].Make}</h4>
         </div>
       </div>
       <div>
@@ -30,8 +39,8 @@ export const CarMainInfo = () => {
           <ModelIcon />
         </div>
         <div>
-          <span>Model</span>
-          <h4>Range Rover Sport</h4>
+          <span>მოდელი</span>
+          <h4>{carInfo[0].Model}</h4>
         </div>
       </div>
       <div>
@@ -39,8 +48,8 @@ export const CarMainInfo = () => {
           <EngineIcon />
         </div>
         <div>
-          <span>Engine</span>
-          <h4>3.0L</h4>
+          <span>ძრავი</span>
+          <h4>{formattedEngineSize}</h4>
         </div>
       </div>
     </div>

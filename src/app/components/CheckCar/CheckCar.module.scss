@@ -1,86 +1,113 @@
-@import '../../colors/colors.scss';
+@import "../../colors/colors.scss";
 
 .mainCont {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .inputCont {
-    max-width: 486px;
-    width: 100%;
-    height: 60px;
-    background-color: $whiteTextColor;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
+  max-width: 486px;
+  width: 100%;
+  height: 60px;
+  background-color: $whiteTextColor;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  border: 9px solid $whiteTextColor;
 }
 
 .inputCont input {
-    background: none;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    width: 70%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 70%;
+  color: $inputColor;
+}
+
+.errorMessage, .erroredInput {
+  color: $warningColor !important;
+}
+
+.errorMessage {
+  white-space: nowrap;
 }
 
 .inputCont div {
-    height: 42px;
-    width: 120px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    background-color: $primaryColor;
-    border: none;
-    border-radius: 22px;
-    color: $whiteTextColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
+  height: 42px;
+  width: 160px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: $primaryColor;
+  border: none;
+  border-radius: 22px;
+  color: $whiteTextColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
 .inputCont div img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .helpCont {
-    max-width: 486px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 14px;
+  max-width: 486px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
 }
 
 .helpCont p {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .underlinedText {
-    color: $whiteTextColor;
-    text-decoration: underline;
-}
-
-.grayText {
-    color: $grayTextColor;
+  color: $whiteTextColor;
+  text-decoration: underline;
 }
 
 .dottedText {
-    color: $whiteTextColor;
-    text-decoration: underline dotted;
+  color: $whiteTextColor;
+  text-decoration: underline dotted;
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 518px) {
+  .helpCont p {
+    font-size: 14px;
+  }
+
+  .inputCont div {
+    width: 40px;
+    gap: 6px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .inputCont {
-        height: 46px;
-    }
+  .inputCont {
+    height: 54px;
+    padding: 0 8px;
+  }
 
-    .inputCont div {
-        height: 32px;
-        font-size: 14px;
-    }
+  .inputCont input {
+    margin-left: 6px;
+  }
+
+  .inputCont div {
+    height: 40px;
+    font-size: 14px;
+  }
 }

@@ -2,17 +2,21 @@
 
 .mainWrapper {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .mainCont {
+  min-height: 100vh;
+}
+
+.content {
   margin-top: 60px;
   max-width: 1440px;
   width: 95%;
   margin: 0 auto;
 }
 
-.cont {
+.mainContent {
   max-width: 602px;
   width: 90%;
   margin-top: 100px;
@@ -38,7 +42,7 @@
 }
 
 @media screen and (max-width: 936px) {
-  .mainCont {
+  .content {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -47,9 +51,10 @@
     margin-top: 30px;
   }
 
-  .cont {
+  .mainContent {
     margin-top: 30px;
   }
+
   .imageCont svg {
     position: absolute;
     bottom: 0;
@@ -69,6 +74,7 @@
   .reportImageCont svg {
     position: absolute;
     width: 440px;
+    height: 100%;
   }
 }
 

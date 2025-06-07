@@ -1,50 +1,26 @@
+'use client'
 import { LoadingIcon } from "@/app/icons/LoadingIcon";
 import { SearchIcon } from "@/app/icons/SearchIcon";
-import { useState } from "react";
 import styles from "./CheckButton.module.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
-import axios from "axios";
 
-export const CheckButton = () => {
-  const [loading, setLoading] = useState(false);
-  const [carInfo, setCarInfo] = useState<any | null>(null);
-  const vin = useSelector((state: RootState) => state.vin);
-  console.log(vin);
-  
+interface ICheckButton {
+  handleClick: () => void
+  loading: boolean
+}
 
-  const decodeVin = async () => {
-    try {
-      const result = await axios.get(`https://carapi.app/api/vin/SALWR2VF1GA556677`);
-      if (result?.data) {
-        setCarInfo(result.data);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getInfo = () => {
-    setLoading(true);
-    decodeVin();
-  };
-
-  console.log(carInfo);
-  
-
+export const CheckButton: React.FC<ICheckButton> = ({ loading, handleClick}) => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 518 : false;
   return (
     <div>
       {loading ? (
-        <div>
+        <div className={styles.loading}>
           <LoadingIcon />
-          <span>Loading...</span>
+          {!isMobile && <span>იტვირთება...</span>}
         </div>
       ) : (
-        <div className={styles.loading} onClick={getInfo}>
+        <div className={styles.loading} onClick={handleClick}>
           <SearchIcon />
-          <span>Check Car</span>
+          {!isMobile && <span>შემოწმება</span>}
         </div>
       )}
     </div>

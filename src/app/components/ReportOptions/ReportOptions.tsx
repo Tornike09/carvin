@@ -1,58 +1,52 @@
 "use client";
 import styles from "./ReportOptions.module.scss";
-import { useState } from "react";
 import { AutoCheckIcon } from "@/app/icons/AutoCheckIcon";
 import { CarFaxIcon } from "@/app/icons/CarFaxIcon";
 
-export const ReportOptions = () => {
-  const [option, setOption] = useState("");
+interface IReportOptionsProps {
+  reportOption: string;
+  setReportOption: React.Dispatch<React.SetStateAction<string>>;
+}
 
+export const ReportOptions: React.FC<IReportOptionsProps> = ({
+  reportOption,
+  setReportOption,
+}) => {
   const handleOption = (optionName: string) => {
-    if (option === optionName) {
-      setOption('');
+    if (reportOption === optionName) {
+      setReportOption("");
     } else {
-      setOption(optionName)
+      setReportOption(optionName);
     }
   };
-  console.log((1596.0 / 1000).toFixed(1));
 
   return (
     <div className={styles.optionsCont}>
       <div
-        className={option === "AutoCheck" ? styles.active : ""}
-        onClick={() => handleOption("AutoCheck")}
+        className={reportOption === "autocheck" ? styles.active : ""}
+        onClick={() => handleOption("autocheck")}
       >
         <AutoCheckIcon />
         <div className={styles.priceAndResult}>
           <div>
-            <h4>12€</h4>
-            <span>Auction 1 Records</span>
+            <h4>4.99₾</h4>
           </div>
-          <input
-            type="radio"
-            checked={option === "AutoCheck"}
-            readOnly
-          />
+          <input type="radio" checked={reportOption === "autocheck"} readOnly />
         </div>
       </div>
       <div
-        className={option === "CARFAX" ? styles.active : ""}
-        onClick={() => handleOption("CARFAX")}
+        className={reportOption === "carfax" ? styles.active : ""}
+        onClick={() => handleOption("carfax")}
       >
         <CarFaxIcon />
         <div className={styles.priceAndResult}>
           <div>
             <h4>
-              <span className={styles.cancelledPrice}>42€</span>
-              <span className={styles.salePrice}>35€</span>
+              <span className={styles.cancelledPrice}>35₾</span>
+              <span className={styles.salePrice}>7.99₾</span>
             </h4>
-            <span>Found 29 Records</span>
           </div>
-          <input
-            type="radio"
-            checked={option === "CARFAX"}
-            readOnly
-          />
+          <input type="radio" checked={reportOption === "carfax"} readOnly />
         </div>
       </div>
     </div>

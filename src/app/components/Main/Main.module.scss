@@ -8,7 +8,7 @@
 }
 
 .mainWrapper > div {
-  margin-top: 60px;
+  margin-top: 30px;
   max-width: 1440px;
   width: 95%;
   display: flex;
@@ -42,22 +42,15 @@
 @media screen and (max-width: 936px) {
   .mainWrapper > div {
     height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .mainWrapper > div {
     margin-top: 30px;
-  }
-
-  .imageCont svg {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    height: 40%;
   }
 
   .reportImageCont {
@@ -71,6 +64,11 @@
   .reportImageCont svg {
     position: absolute;
     width: 440px;
+    height: 100%;
+  }
+
+  .cont {
+    margin-top: 0;
+    width: 95%;
   }
 }
-

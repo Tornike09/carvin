@@ -1,27 +1,40 @@
+"use client";
 import styles from "./VinReport.module.scss";
-import { DocumentIcon } from "@/app/icons/DocumentIcon";
 import { CarMainInfo } from "../CarMainInfo/CarMainInfo";
 import { ReportOptions } from "../ReportOptions/ReportOptions";
+import { BackToCheck } from "../BackToCheck/BackToCheck";
+import { BuyReport } from "../BuyReport/BuyReport";
+import Link from "next/link";
+import { ICarInfo } from "@/app/types";
+import { useState } from "react";
 
-export const VinReport = () => {
+interface IVinReport {
+  vin: string
+  carInfo: ICarInfo[]
+  setCarInfo: React.Dispatch<React.SetStateAction<ICarInfo[]>>
+}
+
+export const VinReport: React.FC<IVinReport> = ({ vin, carInfo, setCarInfo }) => {
+  const [reportOption, setReportOption] = useState('carfax')
   return (
     <div className={styles.vinReport}>
       <div>
-        <h1>Select the desired VIN Report</h1>
-        <p>Online payment with any VISA Mastercard</p>
-        <h3 className={styles.vin}>VIN: SALWR2VF1GA556677</h3>
-        <CarMainInfo/>
+        <BackToCheck setCarInfo={setCarInfo}/>
+        <h1>აირჩიეთ სასურველი რეპორტი</h1>
+        <p>მიიღება ყველა სახის საბანკო ბარათი</p>
+        <h3 className={styles.vin}>VIN: {vin}</h3>
+        <CarMainInfo carInfo={carInfo}/>
         <div className={styles.hr}></div>
-        <ReportOptions/>
+        <ReportOptions reportOption={reportOption} setReportOption={setReportOption}/>
         <div className={styles.buyReportCont}>
-          <h3>Service Fee <span className={styles.finalPrice}>12€</span></h3>
-          <button><DocumentIcon/><span>Buy your report</span></button>
-          <div>
-            <input type="checkbox" />
-            <h4>
-              Agree with <span>Terms & Conditions</span>
-            </h4>
-          </div>
+          <h3>
+            რეპორტის ფასი:{" "}
+            <span className={styles.finalPrice}>
+              {reportOption ? (reportOption === "carfax" ? '7.99' : '4.99') : 0}₾
+            </span>
+          </h3>
+          <BuyReport reportOption={reportOption} vin={vin}/>
+          <h4>გაგრძელებით ეთანხმებით <Link href={'terms'}>წესებსა და პირობებს</Link></h4>
         </div>
       </div>
     </div>
